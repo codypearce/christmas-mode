@@ -150,6 +150,8 @@ Returns `true` if Christmas Mode is currently active.
 
 Start playing Jingle Bells.
 
+> **Note:** Due to browser autoplay policies, music can only start after user interaction (e.g., clicking the caroler or a button). It cannot autoplay on page load.
+
 ### `ChristmasMode.stopMusic()`
 
 Stop the music.
