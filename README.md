@@ -61,6 +61,25 @@ ChristmasMode.enable();
 ChristmasMode.init({ autoEnable: true });
 ```
 
+### React
+
+```jsx
+import { useEffect } from "react";
+import ChristmasMode from "christmas-mode";
+
+function App() {
+  useEffect(() => {
+    ChristmasMode.init({ autoEnable: true });
+
+    return () => {
+      ChristmasMode.destroy();
+    };
+  }, []);
+
+  return <div>My App</div>;
+}
+```
+
 ## Features
 
 - Falling snow with accumulation effect
