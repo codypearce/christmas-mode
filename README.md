@@ -2,14 +2,16 @@
 
 # Christmas Mode
 
-Add festive Christmas decorations to any website with a single line of code. Features falling snow, twinkling lights, a Christmas tree, snowman, marching nutcrackers, Santa's sleigh with reindeer, elves, and more!
+### Dark mode is boring. Use Christmas mode.
+
+![Light Mode vs Dark Mode vs Christmas Mode](christmas-mode.png)
 
 [![npm](https://img.shields.io/npm/v/christmas-mode.svg)](https://www.npmjs.com/package/christmas-mode)
 [![install size](https://packagephobia.com/badge?p=christmas-mode)](https://packagephobia.com/result?p=christmas-mode)
 [![Follow on X](https://img.shields.io/badge/follow-%40codyapearce-1DA1F2?logo=x&style=flat)](https://x.com/codyapearce)
 [![Follow on Bluesky](https://img.shields.io/badge/follow-%40codyapearce-0285FF?logo=bluesky&style=flat&logoColor=white)](https://bsky.app/profile/codyapearce.bsky.social)
 
-![Christmas Mode Preview](thumbnail.png)
+Add festive Christmas decorations to any website with a single line of code.
 
 </div>
 
@@ -81,6 +83,8 @@ function App() {
 ```
 
 ## Features
+
+![Christmas Mode Preview](thumbnail.png)
 
 - Falling snow with accumulation effect
 - Twinkling Christmas lights along the top
