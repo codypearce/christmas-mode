@@ -1,0 +1,15 @@
+# Dev files
+thumbnail.html
+index.html
+tests/
+vitest.config.js
+.eslintrc.json
+tsconfig.json
+build.js
+
+# OS files
+.DS_Store
+
+# Editor
+.idea/
+.vscode/

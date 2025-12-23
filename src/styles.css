@@ -1,0 +1,4998 @@
+/* Base Reset & Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #eee;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+#site-title {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.subtitle {
+  color: #aaa;
+  font-size: 1.2rem;
+}
+
+/* Garland wrapper around title */
+#site-title.garland {
+  position: relative;
+  display: inline-block;
+}
+
+/* Garland SVG container */
+.garland-wrap {
+  position: absolute;
+  pointer-events: none;
+  animation: garland-pulse 2.5s ease-in-out infinite;
+}
+
+/* Top garland - positioned above text */
+.garland-wrap.top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: -5px;
+}
+
+/* Bottom garland - positioned below text */
+.garland-wrap.bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) scaleY(-1);
+  margin-top: -5px;
+}
+
+/* The SVG garland styling */
+.garland-svg {
+  display: block;
+  height: 40px;
+  width: auto;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+}
+
+/* Slow opacity shimmer pulsing */
+@keyframes garland-pulse {
+  0%, 100% {
+    opacity: 0.85;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3)) brightness(0.95);
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4)) brightness(1.1);
+  }
+}
+
+/* Main Content */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.hero {
+  text-align: center;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  margin-bottom: 40px;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 25px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.card p {
+  color: #bbb;
+  line-height: 1.6;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+/* Toggle Switch Container */
+#toggle-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px 20px;
+  border-radius: 50px;
+  z-index: 1000;
+}
+
+.switch-label {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Ornament in Snow Toggle */
+.ornament-snow-toggle {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ornament-snow-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+/* The snowy track - longer */
+.snow-track {
+  position: relative;
+  width: 140px;
+  height: 56px;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 28px;
+  overflow: visible;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4),
+              0 2px 4px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(100, 130, 160, 0.3);
+}
+
+/* Snow surface covering the track */
+.snow-surface {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(240, 248, 255, 1) 40%,
+    rgba(220, 235, 250, 1) 100%);
+  border-radius: 0 0 26px 26px;
+  box-shadow: inset 0 2px 4px rgba(200, 220, 240, 0.5),
+              0 -1px 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Snow texture bumps */
+.snow-surface::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 8%;
+  right: 8%;
+  height: 10px;
+  background:
+    radial-gradient(ellipse 14px 7px at 10% 100%, rgba(255,255,255,1) 0%, transparent 70%),
+    radial-gradient(ellipse 12px 6px at 30% 100%, rgba(255,255,255,1) 0%, transparent 70%),
+    radial-gradient(ellipse 16px 8px at 50% 100%, rgba(255,255,255,1) 0%, transparent 70%),
+    radial-gradient(ellipse 12px 6px at 70% 100%, rgba(255,255,255,1) 0%, transparent 70%),
+    radial-gradient(ellipse 14px 7px at 90% 100%, rgba(255,255,255,1) 0%, transparent 70%);
+}
+
+/* The groove/trail left by the ornament */
+.snow-groove {
+  position: absolute;
+  bottom: 6px;
+  left: 16px;
+  right: 16px;
+  height: 20px;
+  background: linear-gradient(180deg,
+    rgba(180, 200, 220, 0.6) 0%,
+    rgba(200, 215, 230, 0.4) 50%,
+    rgba(220, 235, 250, 0.2) 100%);
+  border-radius: 50%;
+  box-shadow: inset 0 2px 4px rgba(100, 130, 160, 0.3),
+              inset 0 -1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Pushed snow piles on the sides */
+.pushed-snow {
+  position: absolute;
+  bottom: 6px;
+  width: 22px;
+  height: 28px;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(245, 250, 255, 1) 100%);
+  border-radius: 50% 50% 30% 30%;
+  transition: all 0.5s cubic-bezier(0.68, -0.15, 0.32, 1.15);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+}
+
+.pushed-snow-left {
+  left: 4px;
+  transform: scaleX(1.3) scaleY(1.15);
+}
+
+.pushed-snow-right {
+  right: 4px;
+  transform: scaleX(0.5) scaleY(0.6);
+  opacity: 0.6;
+}
+
+/* The sliding ornament */
+.sliding-ornament {
+  position: absolute;
+  left: 8px;
+  bottom: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: left 1s ease-in-out;
+  z-index: 10;
+  filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.35));
+  /* Rotate around center of the ball (20px from bottom of container) */
+  transform-origin: center calc(100% - 20px);
+}
+
+/* Ornament string/hook */
+.snow-track .ornament-string {
+  width: 2px;
+  height: 10px;
+  background: linear-gradient(180deg, #888 0%, #666 100%);
+  border-radius: 1px;
+  margin-bottom: -1px;
+}
+
+/* Ornament metallic cap */
+.snow-track .ornament-cap {
+  width: 18px;
+  height: 10px;
+  background: linear-gradient(180deg, #c0c0c0 0%, #808080 50%, #a0a0a0 100%);
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  z-index: 1;
+  transition: background 0.4s ease;
+}
+
+/* Cap loop */
+.snow-track .ornament-cap::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 7px;
+  border: 2px solid #888;
+  border-bottom: none;
+  border-radius: 50% 50% 0 0;
+  background: transparent;
+  transition: border-color 0.4s ease;
+}
+
+/* Ornament ball - bigger, gray when off */
+.snow-track .ornament-ball {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #888, #555, #333);
+  position: relative;
+  box-shadow: inset -4px -4px 10px rgba(0, 0, 0, 0.4),
+              inset 4px 4px 10px rgba(255, 255, 255, 0.15),
+              0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.5s cubic-bezier(0.68, -0.15, 0.32, 1.15);
+}
+
+/* Ball highlight */
+.snow-track .ornament-ball::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 11px;
+  width: 11px;
+  height: 11px;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* Secondary highlight */
+.snow-track .ornament-ball::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 20px;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* Hover state */
+.ornament-snow-toggle:hover .sliding-ornament {
+  transform: translateY(-2px);
+}
+
+.ornament-snow-toggle:hover .ornament-ball {
+  box-shadow: inset -3px -3px 8px rgba(0, 0, 0, 0.4),
+              inset 3px 3px 8px rgba(255, 255, 255, 0.2),
+              0 4px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== CHECKED/ACTIVE STATE ===== */
+
+/* Move ornament to the right and roll it */
+.ornament-snow-toggle input:checked + .snow-track .sliding-ornament {
+  left: calc(100% - 48px);
+  animation: ornament-roll-right 1s ease-in-out forwards;
+}
+
+/* Roll back when unchecked */
+.ornament-snow-toggle input:not(:checked) + .snow-track .sliding-ornament {
+  animation: ornament-roll-left 1s ease-in-out forwards;
+}
+
+@keyframes ornament-roll-right {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes ornament-roll-left {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Ornament ball turns red and glows */
+.ornament-snow-toggle input:checked + .snow-track .ornament-ball {
+  background: radial-gradient(circle at 30% 30%, #ff6b6b, #c41e3a, #8b0000);
+  box-shadow: inset -4px -4px 10px rgba(0, 0, 0, 0.3),
+              inset 4px 4px 10px rgba(255, 255, 255, 0.2),
+              0 0 18px rgba(196, 30, 58, 0.6),
+              0 0 35px rgba(196, 30, 58, 0.3),
+              0 4px 8px rgba(0, 0, 0, 0.3);
+  animation: ornament-glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes ornament-glow {
+  0% {
+    box-shadow: inset -4px -4px 10px rgba(0, 0, 0, 0.3),
+                inset 4px 4px 10px rgba(255, 255, 255, 0.2),
+                0 0 14px rgba(196, 30, 58, 0.5),
+                0 0 28px rgba(196, 30, 58, 0.25),
+                0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    box-shadow: inset -4px -4px 10px rgba(0, 0, 0, 0.3),
+                inset 4px 4px 10px rgba(255, 255, 255, 0.2),
+                0 0 22px rgba(196, 30, 58, 0.7),
+                0 0 45px rgba(196, 30, 58, 0.4),
+                0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Brighter highlights when active */
+.ornament-snow-toggle input:checked + .snow-track .ornament-ball::before {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.ornament-snow-toggle input:checked + .snow-track .ornament-ball::after {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Golden cap when active */
+.ornament-snow-toggle input:checked + .snow-track .ornament-cap {
+  background: linear-gradient(180deg, #ffd700 0%, #b8860b 50%, #daa520 100%);
+}
+
+.ornament-snow-toggle input:checked + .snow-track .ornament-cap::before {
+  border-color: #daa520;
+}
+
+/* Snow piles swap - pushed to the right now */
+.ornament-snow-toggle input:checked + .snow-track .pushed-snow-left {
+  transform: scaleX(0.5) scaleY(0.6);
+  opacity: 0.6;
+}
+
+.ornament-snow-toggle input:checked + .snow-track .pushed-snow-right {
+  transform: scaleX(1.3) scaleY(1.15);
+  opacity: 1;
+}
+
+/* Groove gets a subtle festive tint when active */
+.ornament-snow-toggle input:checked + .snow-track .snow-groove {
+  background: linear-gradient(180deg,
+    rgba(200, 180, 180, 0.5) 0%,
+    rgba(210, 200, 200, 0.35) 50%,
+    rgba(230, 220, 220, 0.2) 100%);
+}
+
+/* Caroler Music Button */
+.music-btn.caroler-btn {
+  background: linear-gradient(180deg, #2d5a3d 0%, #1a3d2a 100%);
+  border: 2px solid #3d7a4d;
+  color: #fff;
+  cursor: pointer;
+  width: 50px;
+  height: 60px;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.music-btn.caroler-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border-color: #5a9a6d;
+}
+
+.music-btn.caroler-btn.playing {
+  background: linear-gradient(180deg, #3d6a4d 0%, #2a4d3a 100%);
+  border-color: #6aba7d;
+}
+
+/* The Caroler Figure */
+.caroler {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transform: scale(0.9);
+}
+
+/* Hat */
+.caroler-hat {
+  width: 22px;
+  height: 14px;
+  background: linear-gradient(180deg, #c41e3a 0%, #8b0000 100%);
+  border-radius: 3px 3px 0 0;
+  position: relative;
+  z-index: 2;
+}
+
+.hat-brim {
+  position: absolute;
+  bottom: -2px;
+  left: -3px;
+  width: 28px;
+  height: 4px;
+  background: linear-gradient(180deg, #8b0000 0%, #5a0000 100%);
+  border-radius: 2px;
+}
+
+.hat-pom {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle at 30% 30%, #fff, #ddd);
+  border-radius: 50%;
+}
+
+/* Face */
+.caroler-face {
+  width: 20px;
+  height: 18px;
+  background: linear-gradient(180deg, #fdd9b5 0%, #deb896 100%);
+  border-radius: 50% 50% 45% 45%;
+  position: relative;
+  margin-top: -1px;
+  z-index: 1;
+}
+
+.caroler-eyes {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 3px;
+}
+
+.caroler-eyes::before,
+.caroler-eyes::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #333;
+  border-radius: 50%;
+}
+
+.caroler-eyes::before {
+  left: 0;
+}
+
+.caroler-eyes::after {
+  right: 0;
+}
+
+.caroler-mouth {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 3px;
+  background: #c47a7a;
+  border-radius: 0 0 50% 50%;
+  transition: height 0.15s, width 0.15s, border-radius 0.15s;
+}
+
+/* Scarf */
+.caroler-scarf {
+  width: 24px;
+  height: 5px;
+  background: linear-gradient(90deg, #228b22 0%, #228b22 50%, #c41e3a 50%, #c41e3a 100%);
+  border-radius: 2px;
+  margin-top: -2px;
+  position: relative;
+  z-index: 3;
+}
+
+/* Body */
+.caroler-body {
+  width: 26px;
+  height: 16px;
+  background: linear-gradient(180deg, #1a5a1a 0%, #0d3d0d 100%);
+  border-radius: 4px 4px 6px 6px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Songbook */
+.caroler-book {
+  width: 14px;
+  height: 10px;
+  background: linear-gradient(90deg, #8b4513 0%, #8b4513 10%, #f5f5dc 10%, #f5f5dc 48%, #333 48%, #333 52%, #f5f5dc 52%, #f5f5dc 90%, #8b4513 90%);
+  border-radius: 1px;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transform: rotateX(10deg);
+}
+
+/* ===== PLAYING STATE ===== */
+
+/* Singing mouth - opens wider */
+.music-btn.caroler-btn.playing .caroler-mouth {
+  width: 8px;
+  height: 6px;
+  border-radius: 50%;
+  animation: sing 0.4s ease-in-out infinite;
+}
+
+@keyframes sing {
+  0%, 100% {
+    height: 5px;
+    width: 7px;
+  }
+  50% {
+    height: 7px;
+    width: 8px;
+  }
+}
+
+/* Gentle sway while singing */
+.music-btn.caroler-btn.playing .caroler {
+  animation: caroler-sway 1s ease-in-out infinite;
+}
+
+@keyframes caroler-sway {
+  0%, 100% {
+    transform: scale(0.9) rotate(-3deg);
+  }
+  50% {
+    transform: scale(0.9) rotate(3deg);
+  }
+}
+
+/* Pom-pom bounces */
+.music-btn.caroler-btn.playing .hat-pom {
+  animation: pom-bounce 0.5s ease-in-out infinite;
+}
+
+@keyframes pom-bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-2px);
+  }
+}
+
+/* Music notes float up when playing - override tooltip styles */
+.music-btn.caroler-btn.playing::before,
+.music-btn.caroler-btn.playing::after {
+  content: '\266A';
+  position: absolute;
+  font-size: 18px;
+  color: #ffd700;
+  animation: float-note 1.5s ease-in-out infinite;
+  opacity: 0;
+  /* Reset tooltip styles */
+  background: none;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 0;
+  pointer-events: none;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
+}
+
+.music-btn.caroler-btn.playing::before {
+  top: -18px;
+  right: -4px;
+  left: auto;
+  bottom: auto;
+  transform: none;
+  animation-delay: 0s;
+}
+
+.music-btn.caroler-btn.playing::after {
+  top: -22px;
+  left: -4px;
+  right: auto;
+  bottom: auto;
+  transform: none;
+  animation-delay: 0.75s;
+}
+
+@keyframes float-note {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+}
+
+/* Legacy styles for fallback */
+.music-btn:not(.caroler-btn) {
+  background: linear-gradient(135deg, #228b22, #1a6b1a);
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-btn:not(.caroler-btn):hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(34, 139, 34, 0.6);
+}
+
+.music-btn:not(.caroler-btn).playing {
+  background: linear-gradient(135deg, #c41e3a, #8b0000);
+  animation: music-pulse 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes music-pulse {
+  0% { box-shadow: 0 0 5px rgba(196, 30, 58, 0.5); }
+  100% { box-shadow: 0 0 20px rgba(196, 30, 58, 0.8); }
+}
+
+.music-icon {
+  line-height: 1;
+}
+
+/* Caroler Tooltip */
+.music-btn.caroler-btn::after {
+  content: 'Christmas Caroler';
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  background: linear-gradient(180deg, #1a3d2a 0%, #0d2a1a 100%);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid #3d7a4d;
+  z-index: 100;
+}
+
+/* Tooltip arrow */
+.music-btn.caroler-btn::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #0d2a1a;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 100;
+}
+
+/* Show tooltip on hover (only when not playing, since playing uses ::before/::after for notes) */
+.music-btn.caroler-btn:not(.playing):hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.music-btn.caroler-btn:not(.playing):hover::before {
+  opacity: 1;
+}
+
+/* Candy Cane Cursor - matches the candy canes in the page */
+body.christmas-mode-active,
+body.christmas-mode-active *,
+body.christmas-mode-active *:hover,
+body.christmas-mode-active *:focus,
+body.christmas-mode-active *:active,
+body.christmas-mode-active button,
+body.christmas-mode-active button:hover,
+body.christmas-mode-active input,
+body.christmas-mode-active input:hover,
+body.christmas-mode-active a,
+body.christmas-mode-active a:hover,
+body.christmas-mode-active label,
+body.christmas-mode-active label:hover {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cdefs%3E%3Cpattern id='candy-stripe' patternUnits='userSpaceOnUse' width='7' height='7' patternTransform='rotate(-45)'%3E%3Crect x='0' y='0' width='7' height='3.5' fill='%23ffffff'/%3E%3Crect x='0' y='3.5' width='7' height='3.5' fill='%23e23c3c'/%3E%3C/pattern%3E%3C/defs%3E%3Cg transform='rotate(-45 24 24)' stroke='rgba(0,0,0,0.2)' stroke-width='1'%3E%3Cpath d='M17 8 A7 7 0 0 1 31 8 L31 42 L25 42 L25 8 A1 1 0 0 0 23 8 L23 14 L17 14 Z' fill='url(%23candy-stripe)'/%3E%3C/g%3E%3C/svg%3E") 0 0, auto !important;
+}
+
+/* Christmas Decorations Container */
+#christmas-decorations {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+#christmas-decorations.hidden {
+  display: none;
+}
+
+/* Stars Container */
+#stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.star.small {
+  width: 2px;
+  height: 2px;
+}
+
+.star.medium {
+  width: 3px;
+  height: 3px;
+}
+
+.star.large {
+  width: 4px;
+  height: 4px;
+  box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.5);
+}
+
+.star.twinkle {
+  animation: star-twinkle 2s ease-in-out infinite;
+}
+
+.star.twinkle-slow {
+  animation: star-twinkle 4s ease-in-out infinite;
+}
+
+.star.twinkle-fast {
+  animation: star-twinkle 1.2s ease-in-out infinite;
+}
+
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Bright star with cross effect */
+.star.bright {
+  width: 6px;
+  height: 6px;
+  background: #fffde7;
+  box-shadow:
+    0 0 10px 2px rgba(255, 253, 231, 0.8),
+    0 0 20px 4px rgba(255, 253, 231, 0.4);
+}
+
+.star.bright::before,
+.star.bright::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 253, 231, 0.6);
+}
+
+.star.bright::before {
+  width: 2px;
+  height: 16px;
+  top: -5px;
+  left: 2px;
+}
+
+.star.bright::after {
+  width: 16px;
+  height: 2px;
+  top: 2px;
+  left: -5px;
+}
+
+/* Full Moon */
+.moon {
+  position: fixed;
+  top: 60px;
+  right: 80px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fffff8 0%, #fffde7 40%, #f0e6c8 100%);
+  box-shadow:
+    0 0 20px 5px rgba(255, 253, 231, 0.5),
+    0 0 40px 10px rgba(255, 253, 231, 0.3),
+    0 0 60px 20px rgba(255, 253, 231, 0.15);
+  pointer-events: none;
+  z-index: 0;
+  animation: moon-glow 8s ease-in-out infinite;
+}
+
+/* Moon crater details */
+.moon-crater {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(180, 170, 140, 0.25);
+}
+
+.moon-crater.crater-1 {
+  width: 18px;
+  height: 18px;
+  top: 20px;
+  left: 15px;
+}
+
+.moon-crater.crater-2 {
+  width: 12px;
+  height: 12px;
+  top: 45px;
+  left: 35px;
+}
+
+.moon-crater.crater-3 {
+  width: 10px;
+  height: 10px;
+  top: 30px;
+  right: 18px;
+}
+
+@keyframes moon-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 20px 5px rgba(255, 253, 231, 0.5),
+      0 0 40px 10px rgba(255, 253, 231, 0.3),
+      0 0 60px 20px rgba(255, 253, 231, 0.15);
+  }
+  50% {
+    box-shadow:
+      0 0 30px 8px rgba(255, 253, 231, 0.6),
+      0 0 50px 15px rgba(255, 253, 231, 0.35),
+      0 0 80px 30px rgba(255, 253, 231, 0.2);
+  }
+}
+
+/* Lights Container */
+#lights-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.light-bulb {
+  width: 20px;
+  height: 30px;
+  border-radius: 50% 50% 50% 50%;
+  position: relative;
+  animation: light-glow 1s ease-in-out infinite alternate;
+  filter: blur(0.5px);
+  box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+.light-bulb::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 10px;
+  background: #333;
+  border-radius: 2px;
+}
+
+.light-bulb.red { background: #ff4444; color: #ff4444; }
+.light-bulb.green { background: #44ff44; color: #44ff44; }
+.light-bulb.blue { background: #4444ff; color: #4444ff; }
+.light-bulb.yellow { background: #ffff44; color: #ffff44; }
+.light-bulb.orange { background: #ff8844; color: #ff8844; }
+
+@keyframes light-glow {
+  0% { opacity: 0.6; filter: brightness(0.8); }
+  100% { opacity: 1; filter: brightness(1.2); }
+}
+
+/* Light wire */
+.light-wire {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  pointer-events: none;
+}
+
+/* Icicles Container */
+#icicles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 0 20px;
+}
+
+.icicle {
+  position: relative;
+  transform-origin: top center;
+  animation: icicle-sway 4s ease-in-out infinite;
+  filter: drop-shadow(0 2px 4px rgba(100, 150, 200, 0.3));
+}
+
+.icicle svg {
+  display: block;
+}
+
+@keyframes icicle-sway {
+  0%, 100% { transform: rotate(-1deg) scaleY(1); }
+  50% { transform: rotate(1deg) scaleY(1.02); }
+}
+
+/* Water drop at tip */
+.icicle-drop {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 8px;
+  background: radial-gradient(ellipse at 30% 30%, rgba(255, 255, 255, 0.9), rgba(180, 220, 255, 0.7));
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  opacity: 0;
+  animation: drop-form 3s ease-in-out infinite;
+}
+
+@keyframes drop-form {
+  0%, 60% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0) scale(0.5);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(80px) scale(0.8);
+  }
+}
+
+/* Fireplace Mantle */
+#mantle-container {
+  position: fixed;
+  top: 180px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#mantle-bar {
+  width: 500px;
+  height: 20px;
+  background: linear-gradient(180deg, #8B4513 0%, #5D3A1A 50%, #3D2510 100%);
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+#mantle-bar::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -10px;
+  right: -10px;
+  height: 10px;
+  background: linear-gradient(180deg, #A0522D 0%, #8B4513 100%);
+  border-radius: 4px 4px 0 0;
+}
+
+#mantle-bar::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 5%;
+  width: 90%;
+  height: 8px;
+  background: linear-gradient(180deg, #3D2510 0%, #2D1A0A 100%);
+  border-radius: 0 0 3px 3px;
+}
+
+/* Stockings hanging from mantle */
+#stockings-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 5px;
+}
+
+.stocking {
+  position: relative;
+  transform-origin: top center;
+  animation: stocking-sway 4s ease-in-out infinite;
+}
+
+.stocking:nth-child(2) {
+  animation-delay: 0.7s;
+  animation-duration: 3.5s;
+}
+
+.stocking:nth-child(3) {
+  animation-delay: 1.4s;
+  animation-duration: 4.5s;
+}
+
+@keyframes stocking-sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+/* Candy cane sticking out of stocking */
+.stocking-candy-cane {
+  position: absolute;
+  top: -5px;
+  left: 18px;
+  z-index: -1;
+  transform-origin: bottom center;
+}
+
+/* Snow Canvas */
+#snow-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Snow Ground */
+#snow-ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(220, 240, 255, 1) 100%);
+  transition: height 2s ease-out;
+  border-radius: 100% 100% 0 0 / 20px 20px 0 0;
+}
+
+#snow-ground.accumulated {
+  height: 30px;
+}
+
+/* ===== SNOW DEPTH LAYERS (Easy to remove - delete this whole section) ===== */
+#snow-depth-layers {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease-out 1.5s;
+}
+
+#snow-depth-layers.active {
+  opacity: 1;
+}
+
+.snow-drift {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+/* Far layer - furthest back, most blueish, tallest */
+.snow-drift-far {
+  bottom: 0;
+  height: 70px;
+  z-index: 2;
+  background: linear-gradient(180deg, rgba(170, 195, 220, 0.9) 0%, rgba(150, 175, 205, 1) 100%);
+  border-radius: 50% 70% 60% 40% / 35px 28px 0 0;
+  box-shadow: inset 0 6px 18px rgba(255, 255, 255, 0.3);
+}
+
+/* Back layer - blueish tint, wavy hills */
+.snow-drift-back {
+  bottom: 0;
+  height: 55px;
+  z-index: 5;
+  background: linear-gradient(180deg, rgba(200, 215, 235, 0.95) 0%, rgba(180, 200, 225, 1) 100%);
+  border-radius: 60% 80% 0 0 / 30px 25px 0 0;
+  box-shadow: inset 0 5px 15px rgba(255, 255, 255, 0.4);
+}
+
+/* Mid layer - lighter, offset bumps */
+.snow-drift-mid {
+  bottom: 0;
+  height: 42px;
+  z-index: 12;
+  background: linear-gradient(180deg, rgba(225, 235, 250, 0.97) 0%, rgba(210, 225, 245, 1) 100%);
+  border-radius: 70% 50% 80% 40% / 20px 28px 0 0;
+  box-shadow: inset 0 4px 12px rgba(255, 255, 255, 0.5);
+}
+
+/* Front layer - brightest white, closest */
+.snow-drift-front {
+  bottom: 0;
+  height: 28px;
+  z-index: 25;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(245, 250, 255, 1) 100%);
+  border-radius: 40% 90% 50% 70% / 22px 18px 0 0;
+  box-shadow: inset 0 3px 10px rgba(255, 255, 255, 0.8);
+}
+
+/* ===== GINGERBREAD HOUSE ===== */
+.gingerbread-house {
+  position: absolute;
+  bottom: 45px;
+  width: 90px;
+  height: 100px;
+  z-index: 1;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 1s ease-out 2s, transform 1s ease-out 2s;
+}
+
+.gingerbread-house.gb-house-left {
+  left: 20%;
+}
+
+.gingerbread-house.gb-house-right {
+  right: 18%;
+  transform: scale(0.85);
+  transition-delay: 2.3s;
+}
+
+.gingerbread-house.gb-house-center {
+  left: 68%;
+  transform: translateX(-50%) scale(0.95);
+  transition-delay: 2.5s;
+  z-index: 0;
+}
+
+#snow-depth-layers.active .gingerbread-house {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#snow-depth-layers.active .gingerbread-house.gb-house-right {
+  transform: scale(0.85);
+}
+
+#snow-depth-layers.active .gingerbread-house.gb-house-center {
+  transform: translateX(-50%) scale(0.95);
+}
+
+/* House body */
+.gb-house {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 50px;
+  background: linear-gradient(180deg, #c4813a 0%, #a56b2a 100%);
+  border-radius: 3px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Roof */
+.gb-roof {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 40px solid #a56b2a;
+}
+
+/* Roof icing - wavy white edge */
+.gb-roof-icing {
+  position: absolute;
+  top: 40px;
+  left: -50px;
+  width: 100px;
+  height: 12px;
+  background:
+    radial-gradient(circle at 10% 0%, #fff 8px, transparent 8px),
+    radial-gradient(circle at 30% 0%, #fff 8px, transparent 8px),
+    radial-gradient(circle at 50% 0%, #fff 8px, transparent 8px),
+    radial-gradient(circle at 70% 0%, #fff 8px, transparent 8px),
+    radial-gradient(circle at 90% 0%, #fff 8px, transparent 8px);
+}
+
+/* Roof candies */
+.gb-roof-candy {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.gb-candy-1 {
+  top: 18px;
+  left: -20px;
+  background: radial-gradient(circle at 30% 30%, #ff6b6b, #c41e3a);
+}
+
+.gb-candy-2 {
+  top: 28px;
+  left: -5px;
+  background: radial-gradient(circle at 30% 30%, #4ecdc4, #26a69a);
+}
+
+.gb-candy-3 {
+  top: 18px;
+  left: 12px;
+  background: radial-gradient(circle at 30% 30%, #ffe66d, #ffc107);
+}
+
+/* Chimney */
+.gb-chimney {
+  position: absolute;
+  bottom: 68px;
+  right: 18px;
+  width: 15px;
+  height: 22px;
+  background: linear-gradient(180deg, #b35c2a 0%, #8b4513 100%);
+  border-radius: 2px 2px 0 0;
+}
+
+.gb-chimney-snow {
+  position: absolute;
+  top: -4px;
+  left: -3px;
+  width: 21px;
+  height: 8px;
+  background: #fff;
+  border-radius: 4px 4px 2px 2px;
+}
+
+/* Chimney smoke */
+.gb-smoke {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 60px;
+  pointer-events: none;
+}
+
+.gb-smoke-puff {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(ellipse at center, rgba(180, 180, 180, 0.7) 0%, rgba(200, 200, 200, 0.3) 50%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: smoke-rise 4s ease-out infinite;
+}
+
+.gb-smoke-puff:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.gb-smoke-puff:nth-child(2) {
+  animation-delay: 1.3s;
+  left: 45%;
+}
+
+.gb-smoke-puff:nth-child(3) {
+  animation-delay: 2.6s;
+  left: 55%;
+}
+
+@keyframes smoke-rise {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0) scale(0.6);
+    width: 10px;
+    height: 10px;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  30% {
+    opacity: 0.5;
+    width: 18px;
+    height: 16px;
+  }
+  60% {
+    opacity: 0.3;
+    width: 25px;
+    height: 20px;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50px) scale(1.8);
+    width: 30px;
+    height: 25px;
+  }
+}
+
+/* Door */
+.gb-door {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 28px;
+  background: linear-gradient(180deg, #8b4513 0%, #5d3a1a 100%);
+  border-radius: 9px 9px 0 0;
+}
+
+.gb-door-icing {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  height: 3px;
+  background: #fff;
+  border-radius: 6px 6px 0 0;
+}
+
+.gb-doorknob {
+  position: absolute;
+  top: 14px;
+  right: 3px;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle at 30% 30%, #ffd700, #daa520);
+  border-radius: 50%;
+}
+
+/* Windows */
+.gb-window {
+  position: absolute;
+  top: 12px;
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(135deg, #87ceeb 0%, #5dade2 100%);
+  border: 2px solid #8b4513;
+  border-radius: 2px;
+  box-shadow: inset 0 0 6px rgba(255, 255, 150, 0.6);
+}
+
+.gb-window-left {
+  left: 8px;
+}
+
+.gb-window-right {
+  right: 8px;
+}
+
+.gb-window-pane {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 100%;
+  background: #8b4513;
+}
+
+.gb-window-pane::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  width: 14px;
+  height: 1px;
+  background: #8b4513;
+}
+
+.gb-window-icing {
+  position: absolute;
+  bottom: -5px;
+  left: -4px;
+  width: 18px;
+  height: 5px;
+  background: #fff;
+  border-radius: 0 0 3px 3px;
+}
+
+/* Bottom icing */
+.gb-icing-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background:
+    radial-gradient(circle at 10% 100%, #fff 5px, transparent 5px),
+    radial-gradient(circle at 25% 100%, #fff 5px, transparent 5px),
+    radial-gradient(circle at 40% 100%, #fff 5px, transparent 5px),
+    radial-gradient(circle at 55% 100%, #fff 5px, transparent 5px),
+    radial-gradient(circle at 70% 100%, #fff 5px, transparent 5px),
+    radial-gradient(circle at 85% 100%, #fff 5px, transparent 5px);
+}
+
+/* Mini candy canes on sides */
+.gb-candy-cane {
+  position: absolute;
+  bottom: 2px;
+  width: 6px;
+  height: 20px;
+  background: repeating-linear-gradient(
+    0deg,
+    #fff 0px,
+    #fff 3px,
+    #c41e3a 3px,
+    #c41e3a 6px
+  );
+  border-radius: 3px;
+}
+
+.gb-cc-left {
+  left: -4px;
+  transform: rotate(-10deg);
+}
+
+.gb-cc-right {
+  right: -4px;
+  transform: rotate(10deg);
+}
+
+/* Christmas lights on gingerbread house */
+.gb-lights {
+  position: absolute;
+  display: flex;
+  gap: 8px;
+}
+
+.gb-lights-roof {
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.gb-lights-door {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 2px;
+}
+
+.gb-light {
+  width: 6px;
+  height: 8px;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  animation: gb-light-twinkle 1.5s ease-in-out infinite;
+}
+
+.gb-light-red {
+  background: radial-gradient(circle at 30% 30%, #ff8a8a, #c41e3a);
+  box-shadow: 0 0 4px 1px rgba(196, 30, 58, 0.8);
+  animation-delay: 0s;
+}
+
+.gb-light-green {
+  background: radial-gradient(circle at 30% 30%, #90ee90, #228b22);
+  box-shadow: 0 0 4px 1px rgba(34, 139, 34, 0.8);
+  animation-delay: 0.3s;
+}
+
+.gb-light-yellow {
+  background: radial-gradient(circle at 30% 30%, #ffff99, #ffd700);
+  box-shadow: 0 0 4px 1px rgba(255, 215, 0, 0.8);
+  animation-delay: 0.6s;
+}
+
+.gb-light-blue {
+  background: radial-gradient(circle at 30% 30%, #87cefa, #1e90ff);
+  box-shadow: 0 0 4px 1px rgba(30, 144, 255, 0.8);
+  animation-delay: 0.9s;
+}
+
+@keyframes gb-light-twinkle {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.6;
+    filter: brightness(0.7);
+  }
+}
+/* ===== END GINGERBREAD HOUSE ===== */
+
+/* Adjust z-indexes for objects to layer with snow */
+#presents-container {
+  z-index: 10;
+}
+
+#christmas-tree {
+  z-index: 8;
+}
+
+#snowman-container {
+  z-index: 11;
+}
+
+#elves-container {
+  z-index: 18;
+}
+
+/* Add subtle shadows under objects for grounding */
+.snowman::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 15px;
+  background: radial-gradient(ellipse at center, rgba(150, 180, 210, 0.3) 0%, transparent 70%);
+  z-index: -1;
+}
+
+.tree-trunk::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 20px;
+  background: radial-gradient(ellipse at center, rgba(150, 180, 210, 0.25) 0%, transparent 70%);
+}
+
+.elf::before {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 8px;
+  background: radial-gradient(ellipse at center, rgba(150, 180, 210, 0.25) 0%, transparent 70%);
+  z-index: -1;
+}
+/* ===== END SNOW DEPTH LAYERS ===== */
+
+/* Santa Container */
+#santa-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.santa {
+  position: absolute;
+  font-size: 50px;
+  animation: santa-fly 4s linear forwards;
+}
+
+@keyframes santa-fly {
+  0% {
+    left: -100px;
+    top: 20%;
+    transform: rotate(-10deg);
+  }
+  100% {
+    left: 110%;
+    top: 30%;
+    transform: rotate(10deg);
+  }
+}
+
+/* Background Santa with Sleigh */
+.background-santa {
+  position: absolute;
+  top: 8%;
+  left: -300px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  animation: santa-fly-background 20s linear infinite;
+  z-index: 1;
+}
+
+@keyframes santa-fly-background {
+  0% {
+    left: -300px;
+    top: 8%;
+  }
+  25% {
+    top: 12%;
+  }
+  50% {
+    top: 6%;
+  }
+  75% {
+    top: 10%;
+  }
+  100% {
+    left: 110%;
+    top: 8%;
+  }
+}
+
+/* Reindeer body bobbing animation */
+.reindeer-body {
+  animation: reindeer-bob 0.8s ease-in-out infinite;
+}
+
+@keyframes reindeer-bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Reindeer leg bobbing animation */
+.reindeer-leg {
+  animation: leg-bob 0.4s ease-in-out infinite;
+}
+
+.reindeer-leg.back-leg {
+  animation-name: leg-bob-back;
+}
+
+.reindeer-leg.front-leg {
+  animation-name: leg-bob-front;
+}
+
+@keyframes leg-bob-back {
+  0%, 100% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+}
+
+@keyframes leg-bob-front {
+  0%, 100% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+/* Sparkles Container */
+#sparkles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #fff 0%, transparent 70%);
+  border-radius: 50%;
+  animation: sparkle-twinkle 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes sparkle-twinkle {
+  0% { opacity: 0.3; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Custom Dialog */
+#dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+#dialog-overlay.hidden {
+  display: none;
+}
+
+.dialog-box {
+  background: #2a2a2a;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+#dialog-message {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.dialog-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.dialog-buttons button {
+  padding: 10px 30px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+
+.dialog-buttons button:hover {
+  transform: scale(1.05);
+}
+
+#dialog-confirm {
+  background: linear-gradient(135deg, #c41e3a, #228b22);
+  color: #fff;
+}
+
+#dialog-cancel {
+  background: #555;
+  color: #fff;
+}
+
+#dialog-cancel.hidden {
+  display: none;
+}
+
+/* Presents Container */
+#presents-container {
+  position: absolute;
+  bottom: 30px;
+  left: 140px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.present {
+  position: relative;
+  animation: present-appear 0.5s ease-out forwards;
+  transform: scale(0);
+}
+
+@keyframes present-appear {
+  0% { transform: scale(0) translateY(20px); }
+  70% { transform: scale(1.1) translateY(-5px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+.present-box {
+  position: relative;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Ribbon vertical */
+.present-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Ribbon horizontal */
+.present-box::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 20%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.present-bow {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 12px;
+}
+
+.present-bow::before,
+.present-bow::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50% 50% 50% 0;
+  top: 0;
+}
+
+.present-bow::before {
+  left: 0;
+  transform: rotate(-45deg);
+}
+
+.present-bow::after {
+  right: 0;
+  transform: rotate(45deg) scaleX(-1);
+}
+
+.present-bow-center {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Present color variations */
+.present.red .present-box { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+.present.red .present-bow::before,
+.present.red .present-bow::after { background: #f1c40f; }
+.present.red .present-bow-center { background: #f1c40f; }
+
+.present.green .present-box { background: linear-gradient(135deg, #27ae60, #1e8449); }
+.present.green .present-bow::before,
+.present.green .present-bow::after { background: #e74c3c; }
+.present.green .present-bow-center { background: #e74c3c; }
+
+.present.blue .present-box { background: linear-gradient(135deg, #3498db, #2980b9); }
+.present.blue .present-bow::before,
+.present.blue .present-bow::after { background: #f39c12; }
+.present.blue .present-bow-center { background: #f39c12; }
+
+.present.gold .present-box { background: linear-gradient(135deg, #f1c40f, #d4ac0d); }
+.present.gold .present-bow::before,
+.present.gold .present-bow::after { background: #c0392b; }
+.present.gold .present-bow-center { background: #c0392b; }
+
+/* Christmas Tree */
+#christmas-tree {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  width: 260px;
+  height: 400px;
+  animation: tree-appear 1s ease-out forwards;
+  transform: scale(0);
+}
+
+@keyframes tree-appear {
+  0% { transform: scale(0) translateY(50px); }
+  60% { transform: scale(1.05) translateY(-10px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+.tree-trunk {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px;
+  height: 55px;
+  background: linear-gradient(135deg, #8b4513, #5d3a1a);
+  border-radius: 4px;
+}
+
+.tree-tier {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent transparent #228b22 transparent;
+}
+
+.tree-tier-1 {
+  bottom: 50px;
+  border-width: 0 130px 140px 130px;
+  border-bottom-color: #228b22;
+}
+
+.tree-tier-2 {
+  bottom: 150px;
+  border-width: 0 100px 120px 100px;
+  border-bottom-color: #2e9b3a;
+}
+
+.tree-tier-3 {
+  bottom: 235px;
+  border-width: 0 70px 100px 70px;
+  border-bottom-color: #35ab42;
+}
+
+/* Presents under tree */
+.tree-present {
+  position: absolute;
+  bottom: 5px;
+  border-radius: 3px;
+}
+
+.tree-present-box {
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  position: relative;
+}
+
+.tree-present-ribbon-v {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.tree-present-ribbon-h {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 20%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.tree-present-bow {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 10px;
+}
+
+.tree-present-bow::before,
+.tree-present-bow::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50% 50% 50% 0;
+  background: inherit;
+}
+
+.tree-present-bow::before {
+  left: 0;
+  transform: rotate(-45deg);
+}
+
+.tree-present-bow::after {
+  right: 0;
+  transform: rotate(45deg) scaleX(-1);
+}
+
+.tree-star {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 55px;
+  color: #ffd700;
+  text-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700;
+  animation: star-glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes star-glow {
+  0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+  100% { transform: translateX(-50%) scale(1.2); opacity: 1; }
+}
+
+.tree-ornament {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px currentColor;
+  animation: ornament-twinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes ornament-twinkle {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+.tree-ornament.red { background: #e74c3c; color: #e74c3c; }
+.tree-ornament.gold { background: #f1c40f; color: #f1c40f; }
+.tree-ornament.blue { background: #3498db; color: #3498db; }
+.tree-ornament.silver { background: #bdc3c7; color: #bdc3c7; }
+
+.tree-lights {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: tree-light-blink 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes tree-light-blink {
+  0% { opacity: 0.4; box-shadow: 0 0 3px currentColor; }
+  100% { opacity: 1; box-shadow: 0 0 8px currentColor, 0 0 12px currentColor; }
+}
+
+.tree-lights.on { background: #fff; color: #fff; }
+
+/* Snowman Container */
+#snowman-container {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Snowman */
+.snowman {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+/* Snowball fall and squish animation */
+@keyframes snowball-fall {
+  0% {
+    transform: translateX(-50%) translateY(-200px) scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-50%) translateY(10px) scale(1.1, 0.9);
+    opacity: 1;
+  }
+  75% {
+    transform: translateX(-50%) translateY(-5px) scale(0.95, 1.05);
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(-50%) translateY(3px) scale(1.02, 0.98);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Hat fall animation */
+@keyframes hat-fall {
+  0% {
+    transform: translateX(-50%) translateY(-100px) rotate(-20deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-50%) translateY(5px) rotate(10deg);
+    opacity: 1;
+  }
+  75% {
+    transform: translateX(-50%) translateY(-3px) rotate(-5deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Arms pop out animation */
+@keyframes arm-pop-left {
+  0% {
+    transform: rotate(-20deg) scaleX(0);
+    opacity: 0;
+  }
+  60% {
+    transform: rotate(-30deg) scaleX(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-20deg) scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes arm-pop-right {
+  0% {
+    transform: rotate(20deg) scaleX(0);
+    opacity: 0;
+  }
+  60% {
+    transform: rotate(30deg) scaleX(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(20deg) scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* Scarf wrap animation */
+@keyframes scarf-wrap {
+  0% {
+    transform: translateX(-50%) scaleX(0);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-50%) scaleX(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* Fade in for small details */
+@keyframes detail-fade {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Snowman body - three stacked circles */
+.snowman-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle at 30% 30%, #fff, #e8e8e8);
+  border-radius: 50%;
+  box-shadow: inset -5px -5px 15px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: snowball-fall 0.5s ease-out forwards;
+  animation-delay: 0s;
+}
+
+.snowman-middle {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55px;
+  height: 55px;
+  background: radial-gradient(circle at 30% 30%, #fff, #e8e8e8);
+  border-radius: 50%;
+  box-shadow: inset -4px -4px 12px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  animation: snowball-fall 0.5s ease-out forwards;
+  animation-delay: 0.4s;
+}
+
+.snowman-head {
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px;
+  height: 45px;
+  background: radial-gradient(circle at 30% 30%, #fff, #e8e8e8);
+  border-radius: 50%;
+  box-shadow: inset -3px -3px 10px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  animation: snowball-fall 0.5s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+/* Eyes */
+.snowman-eye {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  top: 12px;
+  opacity: 0;
+  animation: detail-fade 0.3s ease-out forwards;
+}
+
+.snowman-eye.left {
+  left: 12px;
+  animation-delay: 1.3s;
+}
+.snowman-eye.right {
+  right: 12px;
+  animation-delay: 1.4s;
+}
+
+/* Carrot nose */
+.snowman-nose {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 20px solid #ff7f00;
+  transform: translateX(-50%) rotate(90deg);
+  transform-origin: top center;
+  opacity: 0;
+  animation: detail-fade 0.3s ease-out forwards;
+  animation-delay: 1.5s;
+}
+
+/* Smile made of coal dots */
+.snowman-smile {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 10px;
+  border: 3px solid transparent;
+  border-bottom: 3px dotted #1a1a1a;
+  border-radius: 0 0 20px 20px;
+  opacity: 0;
+  animation: detail-fade 0.3s ease-out forwards;
+  animation-delay: 1.6s;
+}
+
+/* Top hat */
+.snowman-hat {
+  position: absolute;
+  bottom: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: hat-fall 0.6s ease-out forwards;
+  animation-delay: 1.8s;
+}
+
+.snowman-hat-brim {
+  width: 50px;
+  height: 6px;
+  background: #1a1a1a;
+  border-radius: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.snowman-hat-top {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 3px 3px 0 0;
+}
+
+.snowman-hat-band {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 6px;
+  background: #c41e3a;
+}
+
+/* Scarf */
+.snowman-scarf {
+  position: absolute;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 10px;
+  background: #c41e3a;
+  border-radius: 5px;
+  opacity: 0;
+  animation: scarf-wrap 0.4s ease-out forwards;
+  animation-delay: 2.3s;
+}
+
+.snowman-scarf-tail {
+  position: absolute;
+  top: 6px;
+  right: -5px;
+  width: 12px;
+  height: 25px;
+  background: #c41e3a;
+  border-radius: 0 0 4px 4px;
+  transform: rotate(15deg);
+}
+
+.snowman-scarf-tail::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    #c41e3a 0px,
+    #c41e3a 3px,
+    transparent 3px,
+    transparent 6px
+  );
+}
+
+/* Buttons */
+.snowman-button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  opacity: 0;
+  animation: detail-fade 0.3s ease-out forwards;
+}
+
+.snowman-button:nth-child(1) { bottom: 60px; animation-delay: 2.6s; }
+.snowman-button:nth-child(2) { bottom: 45px; animation-delay: 2.7s; }
+.snowman-button:nth-child(3) { bottom: 30px; animation-delay: 2.8s; }
+
+/* Stick arms */
+.snowman-arm {
+  position: absolute;
+  bottom: 70px;
+  height: 4px;
+  background: linear-gradient(90deg, #5d3a1a, #8b4513);
+  border-radius: 2px;
+  opacity: 0;
+}
+
+.snowman-arm.left {
+  left: 25px;
+  width: 45px;
+  transform: rotate(-20deg);
+  transform-origin: right center;
+  animation: arm-pop-left 0.4s ease-out forwards;
+  animation-delay: 2.9s;
+}
+
+.snowman-arm.right {
+  right: 25px;
+  width: 45px;
+  transform: rotate(20deg);
+  transform-origin: left center;
+  animation: arm-pop-right 0.4s ease-out forwards;
+  animation-delay: 3.1s;
+}
+
+/* Arm twigs */
+.snowman-arm::before,
+.snowman-arm::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 3px;
+  background: linear-gradient(90deg, #5d3a1a, #8b4513);
+  border-radius: 2px;
+}
+
+.snowman-arm.left::before {
+  left: 5px;
+  top: -6px;
+  transform: rotate(-30deg);
+}
+
+.snowman-arm.left::after {
+  left: 5px;
+  bottom: -6px;
+  transform: rotate(30deg);
+}
+
+.snowman-arm.right::before {
+  right: 5px;
+  top: -6px;
+  transform: rotate(30deg);
+}
+
+.snowman-arm.right::after {
+  right: 5px;
+  bottom: -6px;
+  transform: rotate(-30deg);
+}
+
+/* Candy Cane Container */
+#candycane-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Candy Cane */
+.candy-cane {
+  position: absolute;
+  opacity: 0;
+  animation: candycane-appear 0.5s ease-out forwards;
+}
+
+@keyframes candycane-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) rotate(var(--rotation, 0deg));
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--rotation, 0deg));
+  }
+}
+
+.candy-cane svg {
+  display: block;
+  width: 60px;
+  height: 100px;
+}
+
+.candy-cane.left-side {
+  bottom: 150px;
+  left: 15px;
+  --rotation: 25deg;
+}
+
+.candy-cane.right-side {
+  bottom: 150px;
+  right: 15px;
+  --rotation: -25deg;
+}
+
+/* Hanging Ornaments Container */
+#ornaments-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Individual ornament wrapper (includes string + ball) */
+.hanging-ornament {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  animation: ornament-swing 3s ease-in-out infinite;
+}
+
+@keyframes ornament-swing {
+  0%, 100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+/* Ornament string */
+.ornament-string {
+  width: 2px;
+  background: linear-gradient(180deg, #666 0%, #888 100%);
+  border-radius: 1px;
+}
+
+/* Ornament cap (metal top) */
+.ornament-cap {
+  width: 12px;
+  height: 8px;
+  background: linear-gradient(180deg, #c0c0c0 0%, #808080 50%, #a0a0a0 100%);
+  border-radius: 2px 2px 0 0;
+  position: relative;
+}
+
+.ornament-cap::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border: 2px solid #888;
+  border-radius: 50%;
+  background: transparent;
+}
+
+/* Ornament ball */
+.ornament-ball {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: inset -5px -5px 15px rgba(0, 0, 0, 0.3),
+              inset 5px 5px 15px rgba(255, 255, 255, 0.3),
+              0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Highlight reflection */
+.ornament-ball::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+}
+
+/* Secondary highlight */
+.ornament-ball::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+
+/* Ornament color variations */
+.ornament-ball.red {
+  background: radial-gradient(circle at 30% 30%, #ff6b6b, #c41e3a, #8b0000);
+}
+
+.ornament-ball.gold {
+  background: radial-gradient(circle at 30% 30%, #ffd700, #daa520, #b8860b);
+}
+
+.ornament-ball.blue {
+  background: radial-gradient(circle at 30% 30%, #6bb3ff, #3498db, #1a5276);
+}
+
+.ornament-ball.green {
+  background: radial-gradient(circle at 30% 30%, #6bff6b, #228b22, #155415);
+}
+
+.ornament-ball.silver {
+  background: radial-gradient(circle at 30% 30%, #ffffff, #c0c0c0, #808080);
+}
+
+/* Size variations */
+.hanging-ornament.small .ornament-ball {
+  width: 22px;
+  height: 22px;
+}
+
+.hanging-ornament.small .ornament-cap {
+  width: 10px;
+  height: 6px;
+}
+
+.hanging-ornament.large .ornament-ball {
+  width: 40px;
+  height: 40px;
+}
+
+.hanging-ornament.large .ornament-cap {
+  width: 16px;
+  height: 10px;
+}
+
+/* Appear animation */
+.hanging-ornament {
+  opacity: 0;
+  animation: ornament-appear 0.5s ease-out forwards, ornament-swing 3s ease-in-out infinite;
+}
+
+@keyframes ornament-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(-5deg);
+  }
+}
+
+/* Holly Container */
+#holly-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Holly decoration */
+.holly {
+  position: absolute;
+  opacity: 0;
+  animation: holly-appear 0.5s ease-out forwards;
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes holly-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(var(--rotation, 0deg));
+  }
+}
+
+/* Holly positioning */
+.holly.top-left {
+  top: 60px;
+  left: 10px;
+  --rotation: 15deg;
+}
+
+.holly.top-right {
+  top: 60px;
+  right: 10px;
+  --rotation: -15deg;
+}
+
+.holly.bottom-left {
+  bottom: 80px;
+  left: 20px;
+  --rotation: -20deg;
+}
+
+.holly.bottom-right {
+  bottom: 80px;
+  right: 20px;
+  --rotation: 20deg;
+}
+
+/* Holly on content cards */
+.holly.card-holly {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  transform: rotate(15deg);
+  z-index: 10;
+}
+
+/* Mistletoe Container */
+#mistletoe-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Mistletoe decoration */
+.mistletoe {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  animation: mistletoe-appear 0.8s ease-out forwards;
+}
+
+@keyframes mistletoe-appear {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Mistletoe ribbon/string */
+.mistletoe-ribbon {
+  width: 4px;
+  height: 25px;
+  background: linear-gradient(180deg, #c41e3a 0%, #8b0000 100%);
+  border-radius: 2px;
+}
+
+/* Mistletoe bow */
+.mistletoe-bow {
+  position: relative;
+  width: 50px;
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+.mistletoe-bow::before,
+.mistletoe-bow::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 18px;
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  border-radius: 50% 50% 50% 50%;
+  top: 0;
+}
+
+.mistletoe-bow::before {
+  left: 2px;
+  transform: rotate(-20deg);
+}
+
+.mistletoe-bow::after {
+  right: 2px;
+  transform: rotate(20deg);
+}
+
+.mistletoe-bow-center {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, #c0392b 0%, #922b21 100%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Mistletoe tail ribbons */
+.mistletoe-tails {
+  position: relative;
+  width: 40px;
+  height: 30px;
+}
+
+.mistletoe-tail {
+  position: absolute;
+  width: 8px;
+  background: linear-gradient(180deg, #c41e3a 0%, #8b0000 100%);
+  border-radius: 0 0 4px 4px;
+  top: 0;
+}
+
+.mistletoe-tail.left {
+  left: 8px;
+  height: 28px;
+  transform: rotate(15deg);
+}
+
+.mistletoe-tail.right {
+  right: 8px;
+  height: 24px;
+  transform: rotate(-15deg);
+}
+
+/* Mistletoe SVG holder */
+.mistletoe-leaves {
+  filter: drop-shadow(2px 3px 3px rgba(0, 0, 0, 0.3));
+}
+
+/* Gentle sway animation */
+.mistletoe {
+  animation: mistletoe-appear 0.8s ease-out forwards, mistletoe-sway 4s ease-in-out infinite;
+  animation-delay: 0s, 0.8s;
+}
+
+@keyframes mistletoe-sway {
+  0%, 100% {
+    transform: translateX(-50%) rotate(-2deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(2deg);
+  }
+}
+
+/* Wreath Container */
+#wreath-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Wreath positioning - centered above the title */
+.wreath {
+  position: fixed;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: wreath-appear 0.8s ease-out forwards;
+  z-index: 150;
+}
+
+@keyframes wreath-appear {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.5) rotate(-20deg);
+  }
+  70% {
+    transform: translateX(-50%) scale(1.05) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1) rotate(0deg);
+  }
+}
+
+/* Wreath bow at bottom */
+.wreath-bow {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 40px;
+  z-index: 10;
+}
+
+.wreath-bow-loop {
+  position: absolute;
+  width: 28px;
+  height: 24px;
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 50%, #a93226 100%);
+  border-radius: 50%;
+  top: 0;
+}
+
+.wreath-bow-loop.left {
+  left: 0;
+  transform: rotate(-25deg);
+}
+
+.wreath-bow-loop.right {
+  right: 0;
+  transform: rotate(25deg);
+}
+
+.wreath-bow-center {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, #c0392b 0%, #922b21 100%);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.wreath-bow-tail {
+  position: absolute;
+  width: 14px;
+  background: linear-gradient(180deg, #c0392b 0%, #922b21 100%);
+  border-radius: 0 0 6px 6px;
+  top: 20px;
+}
+
+.wreath-bow-tail.left {
+  left: 10px;
+  height: 35px;
+  transform: rotate(20deg);
+}
+
+.wreath-bow-tail.right {
+  right: 10px;
+  height: 30px;
+  transform: rotate(-20deg);
+}
+
+.wreath-bow-tail-end {
+  position: absolute;
+  bottom: -4px;
+  width: 100%;
+  height: 10px;
+  background: inherit;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* ===== ELVES SNOWBALL FIGHT ===== */
+
+#elves-container {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 120px;
+  z-index: 15;
+}
+
+/* Base elf styles */
+.elf {
+  position: relative;
+  width: 50px;
+  height: 80px;
+  opacity: 0;
+  animation: elf-appear 0.5s ease-out forwards;
+}
+
+@keyframes elf-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Elf hat - pointed with bell */
+.elf-hat {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid #228b22;
+  z-index: 3;
+}
+
+.elf-hat::before {
+  content: '';
+  position: absolute;
+  top: 17px;
+  left: -12px;
+  width: 24px;
+  height: 5px;
+  background: #c41e3a;
+  border-radius: 3px;
+}
+
+/* Hat bell */
+.elf-hat::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -3px;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle at 30% 30%, #ffd700, #daa520);
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(255, 215, 0, 0.6);
+}
+
+/* Elf face */
+.elf-face {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 18px;
+  background: linear-gradient(180deg, #fdd9b5 0%, #deb896 100%);
+  border-radius: 50% 50% 45% 45%;
+  z-index: 2;
+}
+
+/* Pointy ears */
+.elf-ear {
+  position: absolute;
+  top: 5px;
+  width: 6px;
+  height: 10px;
+  background: #fdd9b5;
+  border-radius: 50% 50% 20% 20%;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.elf-ear.left {
+  left: -4px;
+  transform: rotate(-30deg);
+}
+
+.elf-ear.right {
+  right: -4px;
+  transform: rotate(30deg);
+}
+
+/* Elf eyes */
+.elf-eyes {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 3px;
+}
+
+.elf-eyes::before,
+.elf-eyes::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #333;
+  border-radius: 50%;
+}
+
+.elf-eyes::before {
+  left: 0;
+}
+
+.elf-eyes::after {
+  right: 0;
+}
+
+/* Rosy cheeks */
+.elf-cheeks {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+}
+
+.elf-cheeks::before,
+.elf-cheeks::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 2px;
+  background: rgba(255, 150, 150, 0.5);
+  border-radius: 50%;
+}
+
+.elf-cheeks::before {
+  left: 0;
+}
+
+.elf-cheeks::after {
+  right: 0;
+}
+
+/* Elf smile */
+.elf-mouth {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 3px;
+  border-bottom: 2px solid #c47a7a;
+  border-radius: 0 0 50% 50%;
+}
+
+/* Elf body/tunic */
+.elf-body {
+  position: absolute;
+  top: 41px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 22px;
+  background: linear-gradient(180deg, #228b22 0%, #1a6b1a 100%);
+  border-radius: 6px 6px 3px 3px;
+  z-index: 1;
+}
+
+/* Belt */
+.elf-body::before {
+  content: '';
+  position: absolute;
+  top: 11px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #1a1a1a;
+}
+
+/* Belt buckle */
+.elf-body::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #ffd700;
+  border-radius: 1px;
+}
+
+/* Elf legs */
+.elf-legs {
+  position: absolute;
+  top: 61px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 22px;
+}
+
+.elf-leg {
+  position: absolute;
+  top: 0;
+  width: 7px;
+  height: 16px;
+  background: linear-gradient(180deg, #c41e3a 0%, #8b0000 100%);
+  border-radius: 3px;
+}
+
+.elf-leg.left {
+  left: 1px;
+}
+
+.elf-leg.right {
+  right: 1px;
+}
+
+/* Elf shoes - curly toed */
+.elf-shoe {
+  position: absolute;
+  bottom: -6px;
+  width: 12px;
+  height: 6px;
+  background: #228b22;
+  border-radius: 3px 6px 3px 3px;
+}
+
+.elf-shoe.left {
+  left: -3px;
+  transform: scaleX(-1);
+}
+
+.elf-shoe.right {
+  right: -3px;
+}
+
+/* Curly toe */
+.elf-shoe::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: -3px;
+  width: 6px;
+  height: 6px;
+  background: #228b22;
+  border-radius: 50%;
+}
+
+/* Elf arms */
+.elf-arm {
+  position: absolute;
+  top: 43px;
+  width: 6px;
+  height: 16px;
+  background: linear-gradient(180deg, #228b22 0%, #1a6b1a 100%);
+  border-radius: 3px;
+  transform-origin: top center;
+  z-index: 0;
+}
+
+.elf-arm.left {
+  left: 10px;
+  transform: rotate(20deg);
+}
+
+.elf-arm.right {
+  right: 10px;
+  transform: rotate(-20deg);
+}
+
+/* Elf hands */
+.elf-hand {
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #fdd9b5;
+  border-radius: 50%;
+}
+
+/* ===== THROWING ELF ===== */
+.elf.throwing {
+  animation: elf-appear 0.5s ease-out forwards, elf-throw-stance 2s ease-in-out infinite 0.5s;
+}
+
+.elf.throwing .elf-arm.right {
+  animation: arm-throw 2s ease-in-out infinite;
+}
+
+@keyframes elf-throw-stance {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  15% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  30% {
+    transform: translateY(-3px) rotate(3deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes arm-throw {
+  0%, 100% {
+    transform: rotate(-20deg);
+  }
+  15% {
+    transform: rotate(-120deg);
+  }
+  30% {
+    transform: rotate(30deg);
+  }
+  50%, 100% {
+    transform: rotate(-20deg);
+  }
+}
+
+/* Snowball */
+.snowball {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle at 30% 30%, #fff, #e0e0e0);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  z-index: 20;
+}
+
+.elf.throwing .snowball {
+  top: 40px;
+  right: 0px;
+  animation: snowball-fly 2s ease-in-out infinite;
+}
+
+@keyframes snowball-fly {
+  0%, 15% {
+    opacity: 0;
+    right: 0px;
+    top: 40px;
+  }
+  20% {
+    opacity: 1;
+    right: 0px;
+    top: 40px;
+  }
+  50% {
+    opacity: 1;
+    right: -120px;
+    top: 15px;
+  }
+  55%, 100% {
+    opacity: 0;
+    right: -120px;
+    top: 25px;
+  }
+}
+
+/* ===== DUCKING ELF ===== */
+.elf.ducking {
+  animation: elf-appear 0.5s ease-out forwards, elf-duck 2s ease-in-out infinite 0.5s;
+}
+
+@keyframes elf-duck {
+  0%, 40% {
+    transform: translateY(0) scaleY(1);
+  }
+  50% {
+    transform: translateY(15px) scaleY(0.7);
+  }
+  60%, 100% {
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+/* Ducking elf raises arms defensively */
+.elf.ducking .elf-arm.left {
+  animation: arm-block-left 2s ease-in-out infinite;
+}
+
+.elf.ducking .elf-arm.right {
+  animation: arm-block-right 2s ease-in-out infinite;
+}
+
+@keyframes arm-block-left {
+  0%, 40% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(-60deg);
+  }
+  60%, 100% {
+    transform: rotate(20deg);
+  }
+}
+
+@keyframes arm-block-right {
+  0%, 40% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(60deg);
+  }
+  60%, 100% {
+    transform: rotate(-20deg);
+  }
+}
+
+/* Snowball splat effect on ducking elf */
+.elf.ducking::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -20px;
+  width: 25px;
+  height: 20px;
+  background: radial-gradient(ellipse at center, #fff 0%, transparent 70%);
+  opacity: 0;
+  animation: snowball-splat 2s ease-in-out infinite;
+}
+
+@keyframes snowball-splat {
+  0%, 48% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  52% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  70%, 100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+/* ===== WALKING ELVES WITH PRESENTS ===== */
+
+.elf.walking {
+  position: absolute;
+  bottom: 0;
+  left: -60px;
+  opacity: 0;
+  animation: elf-walk-right 14s linear infinite;
+  animation-fill-mode: backwards;
+}
+
+/* Layer positioning - matching snow drifts
+   Container #elves-container bottom: 18px
+   Back drift: 55px, Mid drift: 42px, Front drift: 28px */
+.elf.walking.layer-back {
+  transform: scale(0.55);
+  transform-origin: bottom center;
+  bottom: 37px;
+  animation-duration: 20s;
+  opacity: 0.8;
+  z-index: 6;
+  filter: brightness(0.85);
+}
+
+.elf.walking.layer-mid {
+  transform: scale(0.75);
+  transform-origin: bottom center;
+  bottom: 24px;
+  animation-duration: 16s;
+  opacity: 0.9;
+  z-index: 13;
+  filter: brightness(0.92);
+}
+
+.elf.walking.layer-front {
+  transform: scale(0.95);
+  transform-origin: bottom center;
+  bottom: 10px;
+  animation-duration: 12s;
+  opacity: 1;
+  z-index: 26;
+}
+
+/* Walking animation - right */
+@keyframes elf-walk-right {
+  0% {
+    left: -60px;
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% + 60px);
+    opacity: 0;
+  }
+}
+
+/* Reverse direction */
+.elf.walking.reverse {
+  animation-name: elf-walk-left;
+}
+
+@keyframes elf-walk-left {
+  0% {
+    left: calc(100% + 60px);
+    opacity: 0;
+    transform: scaleX(-1);
+  }
+  3% {
+    opacity: 1;
+    transform: scaleX(-1);
+  }
+  97% {
+    opacity: 1;
+    transform: scaleX(-1);
+  }
+  100% {
+    left: -60px;
+    opacity: 0;
+    transform: scaleX(-1);
+  }
+}
+
+/* Reverse with layer scales */
+.elf.walking.layer-back.reverse {
+  animation-name: elf-walk-left-back;
+}
+
+.elf.walking.layer-mid.reverse {
+  animation-name: elf-walk-left-mid;
+}
+
+.elf.walking.layer-front.reverse {
+  animation-name: elf-walk-left-front;
+}
+
+@keyframes elf-walk-left-back {
+  0% {
+    left: calc(100% + 60px);
+    opacity: 0;
+    transform: scale(0.55) scaleX(-1);
+  }
+  3% {
+    opacity: 0.8;
+    transform: scale(0.55) scaleX(-1);
+  }
+  97% {
+    opacity: 0.8;
+    transform: scale(0.55) scaleX(-1);
+  }
+  100% {
+    left: -60px;
+    opacity: 0;
+    transform: scale(0.55) scaleX(-1);
+  }
+}
+
+@keyframes elf-walk-left-mid {
+  0% {
+    left: calc(100% + 60px);
+    opacity: 0;
+    transform: scale(0.75) scaleX(-1);
+  }
+  3% {
+    opacity: 0.9;
+    transform: scale(0.75) scaleX(-1);
+  }
+  97% {
+    opacity: 0.9;
+    transform: scale(0.75) scaleX(-1);
+  }
+  100% {
+    left: -60px;
+    opacity: 0;
+    transform: scale(0.75) scaleX(-1);
+  }
+}
+
+@keyframes elf-walk-left-front {
+  0% {
+    left: calc(100% + 60px);
+    opacity: 0;
+    transform: scale(0.95) scaleX(-1);
+  }
+  3% {
+    opacity: 1;
+    transform: scale(0.95) scaleX(-1);
+  }
+  97% {
+    opacity: 1;
+    transform: scale(0.95) scaleX(-1);
+  }
+  100% {
+    left: -60px;
+    opacity: 0;
+    transform: scale(0.95) scaleX(-1);
+  }
+}
+
+/* Walking elf leg animation */
+.elf.walking .elf-leg {
+  transform-origin: top center;
+}
+
+.elf.walking .elf-leg.left {
+  animation: elf-leg-walk-left 0.4s ease-in-out infinite;
+}
+
+.elf.walking .elf-leg.right {
+  animation: elf-leg-walk-right 0.4s ease-in-out infinite;
+}
+
+@keyframes elf-leg-walk-left {
+  0%, 100% { transform: rotate(15deg); }
+  50% { transform: rotate(-15deg); }
+}
+
+@keyframes elf-leg-walk-right {
+  0%, 100% { transform: rotate(-15deg); }
+  50% { transform: rotate(15deg); }
+}
+
+/* Arms raised up holding present above head
+   Arms originate from shoulders (body at 41px) and reach up to present
+   transform-origin at bottom so arms rotate from shoulder */
+.elf.walking .elf-arm {
+  top: 16px;
+  height: 28px;
+  width: 5px;
+  z-index: 2;
+  transform-origin: bottom center;
+}
+
+.elf.walking .elf-arm.left {
+  left: 10px;
+  transform: rotate(-25deg);
+}
+
+.elf.walking .elf-arm.right {
+  right: 10px;
+  transform: rotate(25deg);
+}
+
+/* Hands at top of arms, reaching up to present
+   Hand at top: -4px relative = 14px absolute
+   Hand bottom at 20px meets present bottom */
+.elf.walking .elf-hand {
+  top: -4px;
+  bottom: auto;
+  width: 6px;
+  height: 6px;
+}
+
+/* Present above head */
+.elf-present {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 38px;
+  height: 28px;
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  border-radius: 3px;
+  z-index: 4;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Ribbon cross */
+.elf-present-ribbon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, #f1c40f 0%, #d4ac0d 100%);
+}
+
+.elf-present-ribbon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 38px;
+  height: 5px;
+  background: linear-gradient(90deg, #f1c40f 0%, #d4ac0d 100%);
+}
+
+/* Bow on top */
+.elf-present-bow {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 10px;
+}
+
+.elf-present-bow::before,
+.elf-present-bow::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  width: 9px;
+  height: 8px;
+  background: #f1c40f;
+  border-radius: 50%;
+}
+
+.elf-present-bow::before {
+  left: 0;
+  transform: rotate(-20deg);
+}
+
+.elf-present-bow::after {
+  right: 0;
+  transform: rotate(20deg);
+}
+
+/* ===== SLEDDING ELVES ===== */
+
+.sledding-elf {
+  position: absolute;
+  bottom: 0;
+  left: -100px;
+  opacity: 0;
+  animation: sled-zoom-right 8s linear infinite;
+  animation-fill-mode: backwards;
+}
+
+/* Layer positioning for sledding elves */
+.sledding-elf.layer-back {
+  transform: scale(0.5);
+  transform-origin: bottom center;
+  bottom: 37px;
+  animation-duration: 12s;
+  opacity: 0.8;
+  z-index: 6;
+  filter: brightness(0.85);
+}
+
+.sledding-elf.layer-mid {
+  transform: scale(0.7);
+  transform-origin: bottom center;
+  bottom: 24px;
+  animation-duration: 9s;
+  opacity: 0.9;
+  z-index: 13;
+  filter: brightness(0.92);
+}
+
+.sledding-elf.layer-front {
+  transform: scale(0.9);
+  transform-origin: bottom center;
+  bottom: 10px;
+  animation-duration: 6s;
+  opacity: 1;
+  z-index: 26;
+}
+
+/* Sledding animation - faster than walking */
+@keyframes sled-zoom-right {
+  0% {
+    left: -100px;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% + 100px);
+    opacity: 0;
+  }
+}
+
+/* Reverse direction */
+.sledding-elf.reverse {
+  animation-name: sled-zoom-left;
+}
+
+@keyframes sled-zoom-left {
+  0% {
+    left: calc(100% + 100px);
+    opacity: 0;
+    transform: scaleX(-1);
+  }
+  5% {
+    opacity: 1;
+    transform: scaleX(-1);
+  }
+  95% {
+    opacity: 1;
+    transform: scaleX(-1);
+  }
+  100% {
+    left: -100px;
+    opacity: 0;
+    transform: scaleX(-1);
+  }
+}
+
+/* Reverse with layer scales */
+.sledding-elf.layer-back.reverse {
+  animation-name: sled-zoom-left-back;
+}
+
+.sledding-elf.layer-mid.reverse {
+  animation-name: sled-zoom-left-mid;
+}
+
+.sledding-elf.layer-front.reverse {
+  animation-name: sled-zoom-left-front;
+}
+
+@keyframes sled-zoom-left-back {
+  0% {
+    left: calc(100% + 100px);
+    opacity: 0;
+    transform: scale(0.5) scaleX(-1);
+  }
+  5% {
+    opacity: 0.8;
+    transform: scale(0.5) scaleX(-1);
+  }
+  95% {
+    opacity: 0.8;
+    transform: scale(0.5) scaleX(-1);
+  }
+  100% {
+    left: -100px;
+    opacity: 0;
+    transform: scale(0.5) scaleX(-1);
+  }
+}
+
+@keyframes sled-zoom-left-mid {
+  0% {
+    left: calc(100% + 100px);
+    opacity: 0;
+    transform: scale(0.7) scaleX(-1);
+  }
+  5% {
+    opacity: 0.9;
+    transform: scale(0.7) scaleX(-1);
+  }
+  95% {
+    opacity: 0.9;
+    transform: scale(0.7) scaleX(-1);
+  }
+  100% {
+    left: -100px;
+    opacity: 0;
+    transform: scale(0.7) scaleX(-1);
+  }
+}
+
+@keyframes sled-zoom-left-front {
+  0% {
+    left: calc(100% + 100px);
+    opacity: 0;
+    transform: scale(0.9) scaleX(-1);
+  }
+  5% {
+    opacity: 1;
+    transform: scale(0.9) scaleX(-1);
+  }
+  95% {
+    opacity: 1;
+    transform: scale(0.9) scaleX(-1);
+  }
+  100% {
+    left: -100px;
+    opacity: 0;
+    transform: scale(0.9) scaleX(-1);
+  }
+}
+
+/* ===== NUTCRACKER SOLDIERS ===== */
+
+#nutcracker-container {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 14;
+}
+
+/* Base nutcracker styles */
+.nutcracker {
+  position: absolute;
+  bottom: 0;
+  width: 45px;
+  height: 120px;
+  left: -60px;
+  opacity: 0;
+  animation: nutcracker-march-right 12s linear infinite;
+  animation-fill-mode: backwards;
+}
+
+/* Layer styles - back layer (smaller, higher, slower)
+   Snow drift back: 55px height, z-index 5
+   Container offset: 20px, so bottom = 55 - 20 = 35px
+   z-index 6 (between back drift 5 and mid drift 12) */
+.nutcracker.layer-back {
+  transform: scale(0.6);
+  transform-origin: bottom center;
+  bottom: 35px;
+  animation-duration: 18s;
+  opacity: 0.8;
+  z-index: 6;
+  filter: brightness(0.85);
+}
+
+/* Layer styles - mid layer
+   Snow drift mid: 42px height, z-index 12
+   Container offset: 20px, so bottom = 42 - 20 = 22px
+   z-index 13 (between mid drift 12 and front drift 25) */
+.nutcracker.layer-mid {
+  transform: scale(0.8);
+  transform-origin: bottom center;
+  bottom: 22px;
+  animation-duration: 14s;
+  opacity: 0.9;
+  z-index: 13;
+  filter: brightness(0.92);
+}
+
+/* Layer styles - front layer (full size)
+   Snow drift front: 28px height, z-index 25
+   Container offset: 20px, so bottom = 28 - 20 = 8px
+   z-index 26 (above front drift 25) */
+.nutcracker.layer-front {
+  transform: scale(1);
+  transform-origin: bottom center;
+  bottom: 8px;
+  animation-duration: 10s;
+  opacity: 1;
+  z-index: 26;
+}
+
+/* Reverse direction */
+.nutcracker.reverse {
+  animation-name: nutcracker-march-left;
+}
+
+.nutcracker.reverse .nutcracker-sword {
+  left: auto;
+  right: -6px;
+  transform: rotate(-15deg);
+}
+
+/* March right (default) */
+@keyframes nutcracker-march-right {
+  0% {
+    left: -60px;
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% + 60px);
+    opacity: 0;
+  }
+}
+
+/* March left (reverse) */
+@keyframes nutcracker-march-left {
+  0% {
+    left: calc(100% + 60px);
+    opacity: 0;
+    transform: scaleX(-1);
+  }
+  3% {
+    opacity: 1;
+    transform: scaleX(-1);
+  }
+  97% {
+    opacity: 1;
+    transform: scaleX(-1);
+  }
+  100% {
+    left: -60px;
+    opacity: 0;
+    transform: scaleX(-1);
+  }
+}
+
+/* Combine scale with scaleX flip for reverse layers */
+.nutcracker.layer-back.reverse {
+  animation-name: nutcracker-march-left-back;
+}
+
+.nutcracker.layer-mid.reverse {
+  animation-name: nutcracker-march-left-mid;
+}
+
+.nutcracker.layer-front.reverse {
+  animation-name: nutcracker-march-left-front;
+}
+
+@keyframes nutcracker-march-left-back {
+  0% {
+    left: calc(100% + 60px);
+    opacity: 0;
+    transform: scale(0.6) scaleX(-1);
+  }
+  3% {
+    opacity: 0.8;
+    transform: scale(0.6) scaleX(-1);
+  }
+  97% {
+    opacity: 0.8;
+    transform: scale(0.6) scaleX(-1);
+  }
+  100% {
+    left: -60px;
+    opacity: 0;
+    transform: scale(0.6) scaleX(-1);
+  }
+}
+
+@keyframes nutcracker-march-left-mid {
+  0% {
+    left: calc(100% + 60px);
+    opacity: 0;
+    transform: scale(0.8) scaleX(-1);
+  }
+  3% {
+    opacity: 0.9;
+    transform: scale(0.8) scaleX(-1);
+  }
+  97% {
+    opacity: 0.9;
+    transform: scale(0.8) scaleX(-1);
+  }
+  100% {
+    left: -60px;
+    opacity: 0;
+    transform: scale(0.8) scaleX(-1);
+  }
+}
+
+@keyframes nutcracker-march-left-front {
+  0% {
+    left: calc(100% + 60px);
+    opacity: 0;
+    transform: scaleX(-1);
+  }
+  3% {
+    opacity: 1;
+    transform: scaleX(-1);
+  }
+  97% {
+    opacity: 1;
+    transform: scaleX(-1);
+  }
+  100% {
+    left: -60px;
+    opacity: 0;
+    transform: scaleX(-1);
+  }
+}
+
+/* Nutcracker hat - tall black military style */
+.nutcracker-hat {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 28px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
+  border-radius: 4px 4px 0 0;
+  z-index: 3;
+  border: 1px solid #333;
+}
+
+/* Hat brim */
+.nutcracker-hat::before {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: -4px;
+  width: 38px;
+  height: 6px;
+  background: linear-gradient(180deg, #2d2d2d 0%, #1a1a1a 100%);
+  border-radius: 2px;
+}
+
+/* Gold hat band */
+.nutcracker-hat::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(180deg, #ffd700 0%, #daa520 100%);
+}
+
+/* Hat top ornament */
+.nutcracker-hat-top {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 8px;
+  background: linear-gradient(180deg, #ffd700 0%, #daa520 100%);
+  border-radius: 50% 50% 0 0;
+}
+
+/* Feather plume */
+.nutcracker-hat-plume {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 14px;
+  background: linear-gradient(180deg, #c41e3a 0%, #8b0000 100%);
+  border-radius: 50% 50% 30% 30%;
+  animation: plume-sway 2s ease-in-out infinite;
+}
+
+@keyframes plume-sway {
+  0%, 100% { transform: translateX(-50%) rotate(-5deg); }
+  50% { transform: translateX(-50%) rotate(5deg); }
+}
+
+/* Curly hair on sides */
+.nutcracker-hair {
+  position: absolute;
+  top: 30px;
+  width: 8px;
+  height: 16px;
+  background: linear-gradient(180deg, #4a3728 0%, #2d1f14 100%);
+  z-index: 2;
+}
+
+.nutcracker-hair.left {
+  left: 2px;
+  border-radius: 50% 0 0 50%;
+}
+
+.nutcracker-hair.right {
+  right: 2px;
+  border-radius: 0 50% 50% 0;
+}
+
+/* Curls on hair */
+.nutcracker-hair::before,
+.nutcracker-hair::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #3a2a1d;
+  border-radius: 50%;
+}
+
+.nutcracker-hair::before {
+  top: 2px;
+}
+
+.nutcracker-hair::after {
+  top: 10px;
+}
+
+/* Face */
+.nutcracker-face {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 22px;
+  background: linear-gradient(180deg, #fdd9b5 0%, #deb896 100%);
+  border-radius: 4px;
+  z-index: 3;
+}
+
+/* Eyes */
+.nutcracker-eyes {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 6px;
+}
+
+.nutcracker-eyes::before,
+.nutcracker-eyes::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #1a1a1a;
+  border-radius: 50%;
+}
+
+.nutcracker-eyes::before {
+  left: 0;
+}
+
+.nutcracker-eyes::after {
+  right: 0;
+}
+
+/* Pink nose */
+.nutcracker-nose {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle at 30% 30%, #ffb6c1 0%, #ff9999 100%);
+  border-radius: 50%;
+}
+
+/* Mustache */
+.nutcracker-mustache {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 6px;
+  background: linear-gradient(180deg, #4a3728 0%, #2d1f14 100%);
+  border-radius: 0 0 50% 50%;
+}
+
+/* Mustache curls */
+.nutcracker-mustache::before,
+.nutcracker-mustache::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  background: #3a2a1d;
+  border-radius: 50%;
+}
+
+.nutcracker-mustache::before {
+  left: -4px;
+}
+
+.nutcracker-mustache::after {
+  right: -4px;
+}
+
+/* Mouth that opens and closes */
+.nutcracker-mouth {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 4px;
+  background: #8b0000;
+  border-radius: 0 0 4px 4px;
+  animation: mouth-chomp 1.5s ease-in-out infinite;
+}
+
+@keyframes mouth-chomp {
+  0%, 40%, 100% {
+    height: 4px;
+    bottom: 2px;
+  }
+  50%, 60% {
+    height: 8px;
+    bottom: 0;
+  }
+}
+
+/* Red jacket body */
+.nutcracker-body {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 36px;
+  background: linear-gradient(180deg, #c41e3a 0%, #8b0000 100%);
+  border-radius: 4px 4px 2px 2px;
+  z-index: 1;
+}
+
+/* Gold buttons */
+.nutcracker-buttons {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 24px;
+}
+
+.nutcracker-buttons::before,
+.nutcracker-buttons::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle at 30% 30%, #ffd700 0%, #b8860b 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(255, 215, 0, 0.5);
+}
+
+.nutcracker-buttons::before {
+  top: 0;
+}
+
+.nutcracker-buttons::after {
+  top: 12px;
+}
+
+/* Epaulettes (gold shoulder decorations) */
+.nutcracker-epaulette {
+  position: absolute;
+  top: -2px;
+  width: 10px;
+  height: 8px;
+  background: linear-gradient(180deg, #ffd700 0%, #daa520 100%);
+  border-radius: 2px;
+}
+
+.nutcracker-epaulette.left {
+  left: -4px;
+  transform: rotate(-10deg);
+}
+
+.nutcracker-epaulette.right {
+  right: -4px;
+  transform: rotate(10deg);
+}
+
+/* Gold fringe on epaulettes */
+.nutcracker-epaulette::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 10px;
+  height: 4px;
+  background: linear-gradient(90deg,
+    #ffd700 0%, #ffd700 20%,
+    transparent 20%, transparent 40%,
+    #ffd700 40%, #ffd700 60%,
+    transparent 60%, transparent 80%,
+    #ffd700 80%, #ffd700 100%);
+}
+
+/* Arms */
+.nutcracker-arm {
+  position: absolute;
+  top: 52px;
+  width: 10px;
+  height: 28px;
+  background: linear-gradient(180deg, #c41e3a 0%, #8b0000 100%);
+  border-radius: 4px;
+  z-index: 0;
+}
+
+.nutcracker-arm.left {
+  left: 0;
+  transform-origin: top center;
+  animation: arm-swing-left 2s ease-in-out infinite;
+}
+
+.nutcracker-arm.right {
+  right: 0;
+  transform-origin: top center;
+  animation: arm-swing-right 2s ease-in-out infinite;
+}
+
+@keyframes arm-swing-left {
+  0%, 100% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+}
+
+@keyframes arm-swing-right {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+/* White gloved hands */
+.nutcracker-hand {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+/* Belt */
+.nutcracker-belt {
+  position: absolute;
+  top: 82px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34px;
+  height: 6px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
+  z-index: 2;
+}
+
+/* Gold belt buckle */
+.nutcracker-belt::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #ffd700 0%, #b8860b 100%);
+  border-radius: 2px;
+}
+
+/* Legs container */
+.nutcracker-legs {
+  position: absolute;
+  top: 86px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* White pants/legs */
+.nutcracker-leg {
+  position: relative;
+  width: 12px;
+  height: 24px;
+  background: linear-gradient(180deg, #fff 0%, #e0e0e0 100%);
+  border-radius: 0 0 4px 4px;
+  transform-origin: top center;
+}
+
+.nutcracker-leg.left {
+  animation: leg-march-left 0.5s ease-in-out infinite;
+}
+
+.nutcracker-leg.right {
+  animation: leg-march-right 0.5s ease-in-out infinite;
+}
+
+@keyframes leg-march-left {
+  0%, 100% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(-20deg);
+  }
+}
+
+@keyframes leg-march-right {
+  0%, 100% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+}
+
+/* Black boots */
+.nutcracker-boot {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 10px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
+  border-radius: 0 0 4px 4px;
+}
+
+/* Sword at side */
+.nutcracker-sword {
+  position: absolute;
+  top: 55px;
+  left: -6px;
+  width: 3px;
+  height: 40px;
+  background: linear-gradient(180deg, #c0c0c0 0%, #808080 100%);
+  border-radius: 1px;
+  transform: rotate(15deg);
+  z-index: 0;
+}
+
+/* Sword handle */
+.nutcracker-sword::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -3px;
+  width: 9px;
+  height: 8px;
+  background: linear-gradient(180deg, #ffd700 0%, #b8860b 100%);
+  border-radius: 2px;
+}
+
+/* Sword guard */
+.nutcracker-sword::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -4px;
+  width: 11px;
+  height: 3px;
+  background: #ffd700;
+  border-radius: 1px;
+}
+
+/* ===================================
+   North Pole Sign
+   =================================== */
+
+#northpole-container {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  z-index: 12;
+  pointer-events: none;
+}
+
+.northpole {
+  position: relative;
+  width: 120px;
+  height: 200px;
+}
+
+/* The striped pole */
+.northpole-pole {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 180px;
+  background: repeating-linear-gradient(
+    0deg,
+    #ff0000 0px,
+    #ff0000 15px,
+    #ffffff 15px,
+    #ffffff 30px
+  );
+  border-radius: 8px 8px 0 0;
+  box-shadow:
+    inset -3px 0 6px rgba(0, 0, 0, 0.3),
+    inset 3px 0 6px rgba(255, 255, 255, 0.3),
+    2px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Snow cap on top of pole */
+.northpole-snowcap {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 20px;
+  background: radial-gradient(ellipse at center, #ffffff 0%, #e8f4ff 60%, #d0e8ff 100%);
+  border-radius: 50%;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 -3px 6px rgba(200, 220, 255, 0.5);
+}
+
+/* The wooden sign */
+.northpole-sign {
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 45px;
+  background: linear-gradient(180deg,
+    #8b5a2b 0%,
+    #6b4423 20%,
+    #8b5a2b 40%,
+    #5d3a1a 60%,
+    #8b5a2b 80%,
+    #6b4423 100%
+  );
+  border-radius: 4px;
+  border: 3px solid #4a3015;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.2),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+    3px 5px 10px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Wood grain texture */
+.northpole-sign::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 8px,
+      rgba(0, 0, 0, 0.05) 8px,
+      rgba(0, 0, 0, 0.05) 10px
+    );
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* Sign text */
+.northpole-text {
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow:
+    1px 1px 0 #2a1a0a,
+    -1px -1px 0 #2a1a0a,
+    1px -1px 0 #2a1a0a,
+    -1px 1px 0 #2a1a0a,
+    2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+/* Snow on top of sign */
+.northpole-sign-snow {
+  position: absolute;
+  top: -8px;
+  left: -5px;
+  right: -5px;
+  height: 12px;
+  background: radial-gradient(ellipse at 20% 80%, #ffffff 0%, #e8f4ff 50%, transparent 70%),
+              radial-gradient(ellipse at 50% 80%, #ffffff 0%, #e8f4ff 50%, transparent 70%),
+              radial-gradient(ellipse at 80% 80%, #ffffff 0%, #e8f4ff 50%, transparent 70%);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+/* Icicles hanging from sign */
+.northpole-icicle {
+  position: absolute;
+  bottom: -10px;
+  width: 4px;
+  background: linear-gradient(180deg,
+    rgba(200, 230, 255, 0.9) 0%,
+    rgba(150, 200, 240, 0.7) 50%,
+    rgba(120, 180, 230, 0.4) 100%
+  );
+  border-radius: 0 0 2px 2px;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  animation: icicle-drip 3s ease-in-out infinite;
+}
+
+@keyframes icicle-drip {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.1);
+  }
+}
+
+/* Snow pile at base */
+.northpole-snow-pile {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 25px;
+  background: radial-gradient(ellipse at center bottom, #ffffff 0%, #e8f4ff 60%, #d0e8ff 100%);
+  border-radius: 50% 50% 0 0;
+  box-shadow:
+    inset 0 -5px 10px rgba(200, 220, 255, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+/* Subtle sway animation for the sign */
+.northpole {
+  animation: northpole-sway 4s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes northpole-sway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(0.5deg);
+  }
+  75% {
+    transform: rotate(-0.5deg);
+  }
+}
+
+/* Candy canes stuck in snow pile */
+.northpole-candycane {
+  position: absolute;
+  bottom: -5px;
+  z-index: 5;
+}
+
+.northpole-candycane svg {
+  width: 25px;
+  height: 40px;
+}
+
+/* Far left candy cane */
+.northpole-candycane.far-left {
+  left: 22px;
+  transform: rotate(-25deg);
+  transform-origin: bottom center;
+}
+
+/* Left candy cane */
+.northpole-candycane.left {
+  left: 38px;
+  transform: rotate(-5deg);
+  transform-origin: bottom center;
+}
+
+/* Right candy cane */
+.northpole-candycane.right {
+  left: 58px;
+  transform: rotate(12deg);
+  transform-origin: bottom center;
+}
+
+/* Far right candy cane */
+.northpole-candycane.far-right {
+  left: 75px;
+  transform: rotate(22deg);
+  transform-origin: bottom center;
+}
+
+/* Caroler positioned to the right of presents */
+/* Presents: left: 140px, 5 presents (40+50+35+55+45=225px) + 4 gaps (4*10=40px) = 265px total */
+/* Presents end at 140 + 265 = 405px, add 15px spacing = 420px */
+.northpole-caroler.music-btn.caroler-btn {
+  position: fixed;
+  bottom: 30px;
+  left: 420px;
+  pointer-events: auto;
+  transform: scale(1.2);
+  background: none;
+  border: none;
+  box-shadow: none;
+  width: auto;
+  height: auto;
+  z-index: 20;
+  transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+/* Caroler hidden state - before entrance */
+.northpole-caroler.caroler-hidden {
+  opacity: 0;
+  transform: scale(0) translateY(50px);
+  pointer-events: none;
+}
+
+/* Caroler entrance animation */
+.northpole-caroler.caroler-entrance {
+  animation: caroler-pop-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes caroler-pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0) translateY(50px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.4) translateY(-10px);
+  }
+  80% {
+    transform: scale(1.1) translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2) translateY(0);
+  }
+}
+
+.northpole-caroler.music-btn.caroler-btn:hover {
+  transform: scale(1.3);
+  box-shadow: none;
+}
+
+.northpole-caroler .caroler {
+  transform: scale(1);
+}
+
+/* Caroler legs */
+.caroler-legs {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.caroler-leg {
+  width: 8px;
+  height: 14px;
+  background: linear-gradient(180deg, #1a3d1a 0%, #0d2d0d 100%);
+  border-radius: 0 0 2px 2px;
+}
+
+/* Caroler feet */
+.caroler-feet {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  margin-top: -1px;
+}
+
+.caroler-foot {
+  width: 10px;
+  height: 5px;
+  background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+  border-radius: 2px 2px 3px 3px;
+}
+
+.caroler-foot.left {
+  border-radius: 4px 2px 2px 4px;
+}
+
+.caroler-foot.right {
+  border-radius: 2px 4px 4px 2px;
+}
+
+/* ===== CONTAINED MODE ===== */
+/* When Christmas Mode is rendered inside a specific container element */
+/* instead of the full page, use absolute positioning relative to parent */
+
+#christmas-decorations.contained {
+  position: absolute;
+}
+
+#christmas-decorations.contained #stars-container {
+  position: absolute;
+}
+
+#christmas-decorations.contained .moon {
+  position: absolute;
+}
+
+#christmas-decorations.contained #mantle-container {
+  position: absolute;
+}
+
+#christmas-decorations.contained .wreath {
+  position: absolute;
+}
+
+#christmas-decorations.contained #snow-canvas {
+  position: absolute;
+}
+
+#christmas-decorations.contained #snow-ground {
+  position: absolute;
+}
+
+#christmas-decorations.contained #snow-depth-layers {
+  position: absolute;
+}
+
+#christmas-decorations.contained .northpole-caroler.music-btn.caroler-btn {
+  position: absolute;
+}
+
+#christmas-mode-toggle-container {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+#christmas-mode-toggle-container.contained {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#christmas-mode-toggle-container.contained.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
