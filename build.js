@@ -52,8 +52,11 @@ async function build() {
     ...baseConfig,
     outfile: 'dist/christmas-mode.umd.js',
     format: 'iife',
-    globalName: 'ChristmasMode',
+    globalName: 'ChristmasModeModule',
     minify: true,
+    footer: {
+      js: 'var ChristmasMode = ChristmasModeModule.default;'
+    }
   });
 
   // Copy TypeScript definitions
