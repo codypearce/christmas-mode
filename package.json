@@ -14,7 +14,7 @@
     "dev": "node build.js --watch",
     "test": "vitest run",
     "test:watch": "vitest",
-        "lint": "eslint src/**/*.js",
+    "lint": "eslint src/**/*.js",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run lint && npm run typecheck && npm run test && npm run build"
   },
@@ -43,6 +43,7 @@
     "esbuild": "^0.19.8",
     "eslint": "^8.55.0",
     "jsdom": "^23.0.0",
+    "puppeteer": "^24.34.0",
     "typescript": "^5.3.2",
     "vitest": "^1.0.0"
   }
