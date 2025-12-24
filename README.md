@@ -19,6 +19,8 @@ Add festive Christmas decorations to any website with a single line of code.
   </a>
 </h1>
 
+[Live Demo](https://codinhood.com/christmas-mode) | [Read the Article](https://codinhood.com/post/christmas-mode)
+
 </div>
 
 ## Installation
