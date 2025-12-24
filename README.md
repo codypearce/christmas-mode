@@ -13,6 +13,12 @@
 
 Add festive Christmas decorations to any website with a single line of code.
 
+<h1>
+  <a href="https://www.youtube.com/watch?v=YBwm96BnbpA">
+    ▶️ Watch the Product Story
+  </a>
+</h1>
+
 </div>
 
 ## Installation
